@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #E74C3C;
+    --complement-color: #3498DB;
+    --grey-color: #ccc;
+    --dark-color: #333;
+}
+
+body { 
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    width: 75%;
+    padding: 1rem;
+}
+
+.container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.container table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.container hr {
+    margin: 2rem 0;
+    height: 1px;
+    border: 0;
+    background: var(--grey-color);
+}
+
+.container form input,
+.container h1,
+.container .alert {
+    margin-bottom: 1rem;
+}
+
+.container form input,
+.container form button,
+.container .alert {
+    padding: .5rem 1rem;
+    border-radius: .25rem;
+}
+
+.container form input {
+    border: 1px solid var(--grey-color);
+}
+
+.container form input:focus {
+    outline: 1px solid var(--complement-color);
+}
+
+.container form button {
+    background: transparent;
+    border: 1px solid var(--dark-color);
+    text-transform: uppercase;
+    letter-spacing: .15rem;
+    transition: background .25s, color .25s;
+}
+
+.container form label {
+    margin-bottom: .5rem;
+}
+
+.container table tr {
+    border-bottom: 1px solid var(--grey-color);
+}
+
+.container table tr td,
+.container table tr th {
+    padding: 1rem 0;
+}
+
+.delete {
+    color: var(--dark-color);
+    transition: color .25s;
+}
+
+.delete:hover {
+    color: var(--primary-color);
+}
+
+.delete, 
+.container form button {
+    cursor: pointer;
+}
+
+.container form button:hover {
+    background: var(--dark-color);
+    color: #fff;
+}
+
+.container .alert {
+    background: var(--primary-color);
+    color: #fff;
+}
