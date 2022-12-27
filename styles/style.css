@@ -104,6 +104,16 @@ body {
 }
 
 .container .alert {
+    background: var(--dark-color);
+    color: #fff;
+}
+
+.container .error {
     background: var(--primary-color);
+    color: #fff;
+}
+
+.container .success {
+    background: var(--complement-color);
     color: #fff;
 }
