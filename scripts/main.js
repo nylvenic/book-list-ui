@@ -18,17 +18,19 @@ class Book {
 
 class BookStorage {
     constructor() {
-        this.books = [];
+        this.books = JSON.parse(localStorage.getItem('books')) || [];
     }
 
     add(bookTitle, author, isbn) {
         const book = new Book(bookTitle, author, isbn);
         this.books.push(book);
+        this.saveToLocalStorage();
     }
 
     delete(isbn) {
         const bookToDelete = this.books.indexOf(book => book.isbn === isbn);
         this.books.splice(bookToDelete, 1);
+        this.saveToLocalStorage();
     }
 
     render() {
@@ -52,6 +54,10 @@ class BookStorage {
 
             booksTable.appendChild(tableRow);
         })
+    }
+
+    saveToLocalStorage() {
+        localStorage.setItem('books', JSON.stringify(this.books));
     }
 }
 
@@ -84,13 +90,26 @@ function insertAfter(parent, target, el) {
 }
 
 const app = new BookStorage();
+app.render();
 
 submit.addEventListener('click', e => {
     e.preventDefault();
 
     if(!bookTitle.value) {
-        let bookTitleError = new Alert('You must enter a book title!');
+        const bookTitleError = new Alert('You must enter a book title!');
         bookTitleError.createUI(container, heading);
+        return;
+    }
+
+    if(!author.value) {
+        const authorValueError = new Alert('You must enter an author!');
+        authorValueError.createUI(container, heading);
+        return;
+    }
+
+    if(!isbn.value) {
+        const isbnValueError = new Alert('You must enter an ISBN!');
+        isbnValueError.createUI(container, heading);
         return;
     }
 
